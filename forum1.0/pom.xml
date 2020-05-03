@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>forum</groupId>
@@ -27,43 +27,116 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-    <!--g/set依赖-->
+    <!-- 连接池 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.0.18</version>
+    </dependency>
+    <!--mysql驱动-->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.39</version>
+    </dependency>
+    <dependency>
+      <groupId>com.mchange</groupId>
+      <artifactId>c3p0</artifactId>
+      <version>0.9.5.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>5.2.6.RELEASE</version>
+    </dependency>
+    <!--orm框架-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>LATEST</version>
+    </dependency>
+    <!--文件上传-->
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version> 1.3.3</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version> 2.6</version>
+    </dependency>
+    <!--mybatis相关包-->
+    <!--<dependency>-->
+      <!--<groupId>org.mybatis</groupId>-->
+      <!--<artifactId>mybatis</artifactId>-->
+      <!--<version>3.3.0</version>-->
+    <!--</dependency>-->
+    <!-- Spring集成MyBatis -->
+    <!--<dependency>-->
+      <!--<groupId>org.mybatis</groupId>-->
+      <!--<artifactId>mybatis-spring</artifactId>-->
+      <!--<version>1.2.3</version>-->
+    <!--</dependency>-->
+
+    <!--整合MP-->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus</artifactId>
+      <version>3.0.6</version>
+    </dependency>
+    <!--MP代码生成器-->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-generator</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+    <!--lombok-->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.16.20</version>
     </dependency>
-    <!--spring核心依赖-->
+    <!--这个jar 文件为Spring 核心提供了大量扩展。可以找到使用Spring ApplicationContext特性时所需的全部类等-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>5.1.10.RELEASE</version>
     </dependency>
+    <!--spring框架 创建bean等需要-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-beans</artifactId>
       <version>5.1.10.RELEASE</version>
     </dependency>
+    <!--spring框架核心jar包-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
       <version>5.1.10.RELEASE</version>
     </dependency>
+    <!--使用 aop特性需要用到的jar包-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aop</artifactId>
       <version>5.1.10.RELEASE</version>
     </dependency>
+    <!--spring 切面-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aspects</artifactId>
       <version>4.3.2.RELEASE</version>
     </dependency>
+    <!--spring 事务-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-tx</artifactId>
       <version>5.1.10.RELEASE</version>
     </dependency>
+    <!--<dependency>-->
+    <!--<groupId>org.springframework</groupId>-->
+    <!--<artifactId>spring-jdbc</artifactId>-->
+    <!--</dependency>-->
     <!--springMvc依赖-->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -91,10 +164,53 @@
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.7.25</version>
     </dependency>
+    <!--json格式支持 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.15</version>
+    </dependency>
+    <!--servlet包-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <!--在spring中使用Freemarker这个必不可少，否则报错-->
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>4.3.6.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>2.3.28</version>
+    </dependency>
+
   </dependencies>
 
   <build>
     <finalName>forum1.0</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.3.7.v20160115</version>
+        <configuration>
+          <httpConnector>
+            <port>8081</port>
+            <host>localhost</host>
+          </httpConnector>
+          <webApp>
+            <contextPath>/forum</contextPath>
+          </webApp>
+          <scanIntervalSeconds>1</scanIntervalSeconds>
+        </configuration>
+      </plugin>
+    </plugins>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
