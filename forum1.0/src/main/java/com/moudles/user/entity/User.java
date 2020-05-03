@@ -112,5 +112,4 @@ public class User implements Serializable {
      */
     private Integer spare3;
 
-
 }

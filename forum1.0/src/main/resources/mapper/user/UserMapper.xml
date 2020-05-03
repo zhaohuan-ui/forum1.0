@@ -28,4 +28,5 @@
         id, username, nick_name, password, phone, email, create_time, update_time, star_scalar, follow_id, role_id, article_id, create_by, flags, spare1, spare2, spare3
     </sql>
 
+
 </mapper>
