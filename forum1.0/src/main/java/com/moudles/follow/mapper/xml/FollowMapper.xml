@@ -9,16 +9,17 @@
         <result column="follow_user" property="followUser" />
         <result column="by_follow_user" property="byFollowUser" />
         <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_by" property="createBy" />
+        <result column="flags" property="flags" />
         <result column="spare1" property="spare1" />
         <result column="spare2" property="spare2" />
         <result column="spare3" property="spare3" />
-        <result column="spare4" property="spare4" />
-        <result column="spare5" property="spare5" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, user_id, follow_user, by_follow_user, create_time, spare1, spare2, spare3, spare4, spare5
+        id, user_id, follow_user, by_follow_user, create_time, update_time, create_by, flags, spare1, spare2, spare3
     </sql>
 
 </mapper>

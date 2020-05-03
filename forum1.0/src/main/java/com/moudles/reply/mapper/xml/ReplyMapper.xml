@@ -7,19 +7,20 @@
         <id column="id" property="id" />
         <result column="reply_id" property="replyId" />
         <result column="article_id" property="articleId" />
-        <result column="author" property="author" />
+        <result column="create_by" property="createBy" />
         <result column="content" property="content" />
-        <result column="time" property="time" />
+        <result column="flags" property="flags" />
+        <result column="reply_time" property="replyTime" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
         <result column="spare1" property="spare1" />
         <result column="spare2" property="spare2" />
         <result column="spare3" property="spare3" />
-        <result column="spare4" property="spare4" />
-        <result column="spare5" property="spare5" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, reply_id, article_id, author, content, time, spare1, spare2, spare3, spare4, spare5
+        id, reply_id, article_id, create_by, content, flags, reply_time, create_time, update_time, spare1, spare2, spare3
     </sql>
 
 </mapper>

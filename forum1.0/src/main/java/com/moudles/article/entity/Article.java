@@ -2,6 +2,7 @@ package com.moudles.article.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -46,7 +47,7 @@ public class Article implements Serializable {
     /**
      * 作者
      */
-    private Integer author;
+    private Integer createBy;
 
     /**
      * 是否可见
@@ -54,9 +55,14 @@ public class Article implements Serializable {
     private Integer visible;
 
     /**
+     * 逻辑删除
+     */
+    private Integer flags;
+
+    /**
      * 创建时间
      */
-    private Integer createTime;
+    private LocalDateTime createTime;
 
     /**
      * 发布时间
@@ -66,7 +72,7 @@ public class Article implements Serializable {
     /**
      * 最新更新时间
      */
-    private Integer updateTime;
+    private LocalDateTime updateTime;
 
     /**
      * 备用字段一
@@ -81,17 +87,7 @@ public class Article implements Serializable {
     /**
      * 备用字段三
      */
-    private String spare3;
-
-    /**
-     * 备用字段四
-     */
-    private Integer spare4;
-
-    /**
-     * 备用字段五
-     */
-    private Integer spare5;
+    private Integer spare3;
 
 
 }
