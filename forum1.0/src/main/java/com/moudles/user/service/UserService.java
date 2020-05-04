@@ -17,5 +17,5 @@ public interface UserService extends IService<User> {
     /**
      *  登录验证
      */
-    //User getOne(String username, HttpSession session);
+    User getUser(String username);
 }

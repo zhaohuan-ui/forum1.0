@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,10 +40,8 @@ public class UserController {
     @ResponseBody
     public HttpResult<Object> login(@RequestBody User userRequest,HttpSession session) {
         try {
-            /*User user = new User();
-            user.setUsername(userRequest.getUsername());*/
-            User user = userService.getOne(new QueryWrapper<User>().eq("username", userRequest.getUsername()));
-            //将用户信息保存到session中
+            User user = userService.getUser(userRequest.getUsername());
+            // 将用户信息保存到session中
             SessionInfo sessionInfo = new SessionInfo();
             sessionInfo.setUser(user);
             session.setMaxInactiveInterval(60 * 60 * 6);
@@ -65,6 +64,17 @@ public class UserController {
         map.put("name", token);
         map.put("avatar", "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
         return HttpResultUtil.success("验证成功!",map);
+    }
+
+    /**
+     *  退出登录功能
+     */
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    @ResponseBody
+    public HttpResult<Object> logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.removeAttribute(Globals.USER_SESSION); // 注销该操作用户
+        return HttpResultUtil.success("退出成功!", null);
     }
 
 }

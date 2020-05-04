@@ -22,14 +22,9 @@ import javax.servlet.http.HttpSession;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
-   /* @Override
-    public User getOne(String username, HttpSession session) {
+    @Override
+    public User getUser(String username) {
         User user = this.getOne(new QueryWrapper<User>().eq("username", username));
-        // 将用户信息保存到session中
-        SessionInfo sessionInfo = new SessionInfo();
-        sessionInfo.setUser(user);
-        session.setMaxInactiveInterval(60 * 60 * 6);
-        session.setAttribute(Globals.USER_SESSION, sessionInfo);
         return user;
-    }*/
+    }
 }
