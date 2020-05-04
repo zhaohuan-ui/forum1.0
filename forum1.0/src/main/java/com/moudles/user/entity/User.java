@@ -2,7 +2,10 @@ package com.moudles.user.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -18,6 +21,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@TableName("user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,12 +60,12 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
-    private Integer createTime;
+    private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
-    private Integer updateTime;
+    private LocalDateTime updateTime;
 
     /**
      * 星标量
@@ -89,6 +93,11 @@ public class User implements Serializable {
     private Integer createBy;
 
     /**
+     * 逻辑删除
+     */
+    private Integer flags;
+
+    /**
      * 备用字段一
      */
     private String spare1;
@@ -101,17 +110,6 @@ public class User implements Serializable {
     /**
      * 备用字段三
      */
-    private String spare3;
-
-    /**
-     * 备用字段四
-     */
-    private Integer spare4;
-
-    /**
-     * 备用字段五
-     */
-    private Integer spare5;
-
+    private Integer spare3;
 
 }

@@ -2,6 +2,7 @@ package com.moudles.log.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -44,9 +45,24 @@ public class Log implements Serializable {
     private Integer type;
 
     /**
+     * 上传用户
+     */
+    private Integer createBy;
+
+    /**
+     * 逻辑删除
+     */
+    private Integer flags;
+
+    /**
      * 操作时间
      */
-    private Integer time;
+    private LocalDateTime createTime;
+
+    /**
+     * 更新时间
+     */
+    private LocalDateTime updateTime;
 
     /**
      * 备用字段一
@@ -61,17 +77,7 @@ public class Log implements Serializable {
     /**
      * 备用字段三
      */
-    private String spare3;
-
-    /**
-     * 备用字段四
-     */
-    private Integer spare4;
-
-    /**
-     * 备用字段五
-     */
-    private Integer spare5;
+    private Integer spare3;
 
 
 }

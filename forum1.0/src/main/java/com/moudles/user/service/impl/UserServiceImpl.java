@@ -1,10 +1,15 @@
 package com.moudles.user.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.commons.constan.Globals;
+import com.moudles.user.VO.SessionInfo;
 import com.moudles.user.entity.User;
 import com.moudles.user.mapper.UserMapper;
-import com.moudles.user.service.IUserService;
+import com.moudles.user.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * <p>
@@ -15,6 +20,16 @@ import org.springframework.stereotype.Service;
  * @since 2020-05-03
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
+   /* @Override
+    public User getOne(String username, HttpSession session) {
+        User user = this.getOne(new QueryWrapper<User>().eq("username", username));
+        // 将用户信息保存到session中
+        SessionInfo sessionInfo = new SessionInfo();
+        sessionInfo.setUser(user);
+        session.setMaxInactiveInterval(60 * 60 * 6);
+        session.setAttribute(Globals.USER_SESSION, sessionInfo);
+        return user;
+    }*/
 }

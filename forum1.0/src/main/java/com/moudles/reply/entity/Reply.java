@@ -2,6 +2,7 @@ package com.moudles.reply.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -41,7 +42,7 @@ public class Reply implements Serializable {
     /**
      * 作者
      */
-    private Integer author;
+    private Integer createBy;
 
     /**
      * 回复内容
@@ -49,9 +50,24 @@ public class Reply implements Serializable {
     private String content;
 
     /**
+     * 逻辑删除
+     */
+    private Integer flags;
+
+    /**
      * 回复时间
      */
-    private Integer time;
+    private Integer replyTime;
+
+    /**
+     * 添加时间
+     */
+    private LocalDateTime createTime;
+
+    /**
+     * 更新时间
+     */
+    private LocalDateTime updateTime;
 
     /**
      * 备用字段一
@@ -66,17 +82,7 @@ public class Reply implements Serializable {
     /**
      * 备用字段三
      */
-    private String spare3;
-
-    /**
-     * 备用字段四
-     */
-    private Integer spare4;
-
-    /**
-     * 备用字段五
-     */
-    private Integer spare5;
+    private Integer spare3;
 
 
 }

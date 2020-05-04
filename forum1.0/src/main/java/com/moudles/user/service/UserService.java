@@ -3,6 +3,8 @@ package com.moudles.user.service;
 import com.moudles.user.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * <p>
  * 用户表 服务类
@@ -11,6 +13,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author zhaohuan
  * @since 2020-05-03
  */
-public interface IUserService extends IService<User> {
-
+public interface UserService extends IService<User> {
+    /**
+     *  登录验证
+     */
+    //User getOne(String username, HttpSession session);
 }
