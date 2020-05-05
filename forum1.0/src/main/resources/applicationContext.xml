@@ -12,10 +12,11 @@
        http://www.springframework.org/schema/tool/spring-tool.xsd
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd
-       http://www.springframework.org/schema/aop ">
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--扫描-->
-    <context:component-scan base-package="com.moudles">
+    <context:component-scan base-package="com.moudles,com.commons.log">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
     </context:component-scan>
 
@@ -41,6 +42,11 @@
     <!--开启事务的注解支持-->
     <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
 
+    <!-- 启动@aspectj的自动代理支持-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--日志类-->
+    <bean id = "log" class="com.commons.log.Log"></bean>
+
     <!--mybatis和spring整合-->
     <bean id="sessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
         <!--指定配置文件-->
@@ -51,13 +57,29 @@
         <property name="mapperLocations" value="classpath:mapper/**/*.xml"></property>
         <!--<property name="configuration" ref="mybatisConfig"/>-->
         <!-- MP 全局配置注入 -->
-        <!--<property name="globalConfig" ref="globalConfig"/>-->
+        <property name="globalConfig" ref="globalConfig"/>
+
+        <property name="plugins">
+            <array>
+                <bean class="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor"></bean>
+            </array>
+        </property>
 
     </bean>
 
     <!--<bean id="mybatisConfig" class="com.baomidou.mybatisplus.spring.MybatisConfiguration">-->
         <!--<property name="mapUnderscoreToCamelCase" value="true"/>-->
     <!--</bean>-->
+
+    <bean id="globalConfig" class="com.baomidou.mybatisplus.core.config.GlobalConfig">
+        <property name="dbConfig" ref="dbConfig"/>
+    </bean>
+
+    <bean id="dbConfig" class="com.baomidou.mybatisplus.core.config.GlobalConfig.DbConfig">
+        <property name="keyGenerator" ref="keyGenerator"/>
+    </bean>
+
+    <bean id="keyGenerator" class="com.baomidou.mybatisplus.extension.incrementer.H2KeyGenerator"/>
 
     <!-- 定义 MP 全局策略 -->
     <!--<bean id="globalConfig" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">-->
