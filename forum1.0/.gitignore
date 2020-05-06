@@ -19,15 +19,11 @@ hs_err_pid*
 **/awf
 **/out
 **/target
-**/log
 **/logs
 **/.project
 **/.settings
 **/.classpath
 **/merchant/ext
 **/merchant/build
-/projects/merchant-web/src/main/webapp/index.html
-/sms/
 **/node_modules
 **/dist
-!/sms-orm/src/main/resources/sms_mapper/manual-MaMapper.xml
