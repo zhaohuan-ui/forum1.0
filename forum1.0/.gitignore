@@ -1,0 +1,33 @@
+*.class
+*.bak
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+#test
+
+**/*.idea
+**/*.iml
+
+**/awf
+**/out
+**/target
+**/log
+**/logs
+**/.project
+**/.settings
+**/.classpath
+**/merchant/ext
+**/merchant/build
+/projects/merchant-web/src/main/webapp/index.html
+/sms/
+**/node_modules
+**/dist
+!/sms-orm/src/main/resources/sms_mapper/manual-MaMapper.xml
