@@ -48,6 +48,11 @@ public class User implements Serializable {
     private String password;
 
     /**
+     * 性别
+     */
+    private Integer sex;
+
+    /**
      * 号码
      */
     private String phone;
@@ -56,6 +61,26 @@ public class User implements Serializable {
      * 邮箱
      */
     private String email;
+
+    /**
+     * 所在行业
+     */
+    private String industry;
+
+    /**
+     * 职业经历
+     */
+    private String career;
+
+    /**
+     * 个人简介
+     */
+    private String education;
+
+    /**
+     * 教育经历
+     */
+    private String introduction;
 
     /**
      * 创建时间
@@ -98,18 +123,7 @@ public class User implements Serializable {
     private Integer flags;
 
     /**
-     * 备用字段一
+     *  备注
      */
-    private String spare1;
-
-    /**
-     * 备用字段二
-     */
-    private String spare2;
-
-    /**
-     * 备用字段三
-     */
-    private Integer spare3;
-
+    private String remark;
 }

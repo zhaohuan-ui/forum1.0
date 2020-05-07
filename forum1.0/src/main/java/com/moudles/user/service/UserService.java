@@ -18,4 +18,6 @@ public interface UserService extends IService<User> {
      *  登录验证
      */
     User getUser(String username);
+
+    void updateUser(User user);
 }

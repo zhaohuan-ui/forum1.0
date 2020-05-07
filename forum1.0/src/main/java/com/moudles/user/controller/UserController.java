@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * <p>
@@ -32,6 +33,25 @@ public class UserController {
 
     @Autowired
     private UserService userService; // 用户user表
+
+    /**
+     *  登录验证
+     */
+    @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+    @ResponseBody
+    public HttpResult<Object> updateUser(@RequestBody User user) {
+        userService.updateUser(user);
+        return HttpResultUtil.success("登录成功!",null);
+    }
+
+    @RequestMapping(value = "/getUser")
+    @ResponseBody
+    public HttpResult<Object> getUser(String username){
+        System.out.println();
+        User user = userService.getUser(username);
+        user.setPassword(UUID.randomUUID().toString());
+        return HttpResultUtil.success("查询成功!",user);
+    }
 
     /**
      *  登录验证
