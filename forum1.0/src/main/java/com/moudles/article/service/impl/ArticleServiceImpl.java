@@ -17,4 +17,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements IArticleService {
 
+    @Override
+    public String updateFlags(Integer id) {
+        if(this.updateById(getArticle().setId(id).setFlags(1))){
+            return "success";
+        }
+        return "error";
+    }
+
+    public Article getArticle(){return new Article();}
 }

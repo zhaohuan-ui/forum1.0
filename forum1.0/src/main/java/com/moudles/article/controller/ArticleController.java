@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * <p>
@@ -28,7 +29,12 @@ public class ArticleController {
     @RequestMapping("/save")
     public HttpResult<Object> save(@RequestBody ArticleVo articleVo){
        articleService.save(articleVo.getArticle(articleVo));
-       return HttpResultUtil.error("success",articleVo);
+       return HttpResultUtil.success("success",articleVo);
+    }
+
+    @RequestMapping("updateFlags")
+    public HttpResult<Object> updateFlags(@RequestParam Integer id){
+        return HttpResultUtil.success("message",articleService.updateFlags(id));
     }
 
 }

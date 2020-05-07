@@ -13,4 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IArticleService extends IService<Article> {
 
+    //删除文章 将flag改为1
+    String updateFlags(Integer id);
 }
