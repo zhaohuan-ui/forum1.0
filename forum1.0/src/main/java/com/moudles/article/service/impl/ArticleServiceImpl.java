@@ -17,6 +17,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements IArticleService {
 
+    /**
+     * 逻辑删除
+     * @param id
+     * @return
+     */
     @Override
     public String updateFlags(Integer id) {
         if(this.updateById(getArticle().setId(id).setFlags(1))){

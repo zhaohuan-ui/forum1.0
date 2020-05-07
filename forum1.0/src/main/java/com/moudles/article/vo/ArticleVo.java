@@ -3,6 +3,8 @@ package com.moudles.article.vo;
 import com.moudles.article.entity.Article;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArticleVo {
 
@@ -69,6 +71,21 @@ public class ArticleVo {
      */
     public Integer spare3;
 
+    /**
+     * 返回前端的vo集合
+     */
+    public List<ArticleVo> articleVos;
+
+    public ArticleVo(List<Article> list){
+        List<ArticleVo> articleList;
+        if(list != null && list.size()>0){
+            articleList = new ArrayList<>();
+            for(Article article : list){
+                articleList.add(getArticleVo(article));
+            }
+        }
+    }
+
     public ArticleVo(){}
 
     public Article getArticle(ArticleVo articleVo){
@@ -97,9 +114,37 @@ public class ArticleVo {
         if(articleVo.releaseTime != null){
             article.setReleaseTime(articleVo.releaseTime);
         }
-        if(articleVo.updateTime != null){
-            article.setUpdateTime(articleVo.updateTime);
-        }
+        article.setUpdateTime(LocalDateTime.now());
+
         return article;
+    }
+
+    public ArticleVo getArticleVo(Article article){
+        if(article.getTitle() != null){
+            this.title = article.getTitle();
+        }
+        if(article.getContent() != null){
+            this.content = article.getContent();
+        }
+        if(article.getViews() != null){
+            this.views = article.getViews();
+        }
+        if(article.getCreateBy() != null){
+            this.createBy = article.getCreateBy();
+        }
+        if(article.getVisible() != null){
+            this.visible = article.getVisible();
+        }
+        if(article.getFlags() != null){
+            this.flags = article.getFlags();
+        }
+        if(article.getCreateTime() != null){
+            this.createTime = article.getCreateTime();
+        }
+        if(article.getReleaseTime() != null){
+            this.releaseTime = article.getReleaseTime();
+        }
+        article.setUpdateTime(LocalDateTime.now());
+        return this;
     }
 }
