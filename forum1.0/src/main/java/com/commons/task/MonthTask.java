@@ -27,7 +27,7 @@ public class MonthTask {
     ArticleServiceImpl articleService;
 
     //每月最后一日的23:59触发此调度
-    @Scheduled(cron = "0 59 23 L * ?")
+//    @Scheduled(cron = "0 0 23  * ?")
     public void deleteArticles() {
         articleService.deleteByFlags();
         log.info("delete articles on {}", DateUtils.getCurrentDateTime());
