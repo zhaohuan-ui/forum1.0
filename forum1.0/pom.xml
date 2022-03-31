@@ -107,7 +107,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-beans</artifactId>
-      <version>5.1.10.RELEASE</version>
+      <version>5.3.18</version>
     </dependency>
     <!--spring框架核心jar包-->
     <dependency>
